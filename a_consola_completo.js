@@ -1,72 +1,90 @@
-//*********************************************************************************************
-//*********************************IMPORTADO DESDE MINIMIZAR************************************************************
+//número de pizzas disponibles en la pizzería
+var M = 5;
+//número de equipos de 2 personas
+var T2 = 1;
+//número de equipos de 3 personas
+var T3 = 2;
+//número de equipos de 4 personas
+var T4 = 1;
 
+//Entrada
+var entrada = new Array();
+entrada[0] = M;
+entrada[1] = T2;
+entrada[2] = T3;
+entrada[3] = T4;
+console.log(entrada);
+
+// Lineas M (descripcion de pizzas)
+    //numero de ingredientes I - lista de ingredientes LI
+
+// Formato de salida
+// D = Numero de equipos a las que se les entrega pizzas
+// L = Numero de personas en el equiṕo - P = lista de las pizzas entregadas
+
+//*********************************************************************************************
+// Arreglo de pizas = MT
+/*
+var arraypizzas = new Array();
+arraypizzas[0] = M0;
+arraypizzas[1] = M1;
+arraypizzas[2] = M2;
+arraypizzas[3] = M3;
+arraypizzas[4] = M4;
+console.log('Arreglo de Pizas con ingredientes = arraypizzas');
+console.log(arraypizzas);
+*/
+//*********************************************************************************************
+
+
+//*********************************************************************************************
 let fs = require('fs');
 
-let archivo = fs.readFileSync('d_many_pizzas', 'utf-8');
+let archivo = fs.readFileSync('a_example', 'utf-8');
 //console.log(archivo);
 
 var separador = "\n";
 var conjuntoingredientes = require('./funstringarreglo');
 var informacion = conjuntoingredientes(archivo, separador);
-//console.log('matriz obtenida del archivo plano');
 //console.log(informacion);
 var longinformacion = informacion.length;
-//console.log('longitud de la matriz');
 //console.log(longinformacion);
 
 var remover = informacion.splice(0, 1);
 var remover = informacion.splice((informacion.length-1), 1);
 
-//console.log('informacion sin la primera y ultima linea');
 //console.log(informacion);
-//console.log('longitud sin a primera y ultima linea');
 //console.log(longinformacion);
 
 //Filtrar arreglos emptys del array anterior
   var informacionfiltrada = informacion.filter(function (el) {
     return el != null;
   });
-  //console.log('matriz FILTRADA');
-  //console.log(informacionfiltrada);
+  console.log('informacion filtrada');
+  console.log(informacionfiltrada);
   var longfiltrada = informacionfiltrada.length;
-  //console.log('longitud de la matriz FILTRADA');
   //console.log(longfiltrada);
 
-  var Mv = new Array()
-  for (var i = 0; i < longfiltrada; i++) {
-    var pizza = informacionfiltrada[i];
-    var espacio = " ";
-    var ingredientes = require('./funstringarreglo');
-    var nombreingredientes = ingredientes(pizza, espacio);
-    var eliminarprimero = nombreingredientes.splice(0, 1);
-    //Filtrar arreglos emptys del array anterior
-      var listaingredientes = nombreingredientes.filter(function (el) {
-        return el != null;
-      });
-      Mv[i] = listaingredientes;
-  }
-  //console.log('Arreglo de Pizas con ingredientes = arraypizzas');
-  //console.log(Mv);
-  var arreglo = Mv;
+var M = new Array()
+for (var i = 0; i < longfiltrada; i++) {
+  var pizza = informacionfiltrada[i];
+  var espacio = " ";
+  var ingredientes = require('./funstringarreglo');
+  var nombreingredientes = ingredientes(pizza, espacio);
+  var eliminarprimero = nombreingredientes.splice(0, 1);
+  //Filtrar arreglos emptys del array anterior
+    var listaingredientes = nombreingredientes.filter(function (el) {
+      return el != null;
+    });
+    M[i] = listaingredientes;
+}
+console.log('Arreglo de Pizas con ingredientes = arraypizzas');
+console.log(M);
+//console.log('usar al final M[1] ');
+//console.log(M[1]);
 
-//*********************************************************************************************
-//var arraypizzas = simplificado;
-var arraypizzas = Mv;
-//*********************************************************************************************
+var arraypizzas = M;
 
-//********************************Se hace por b_console****************************************
-//var arraypizzas = [['mushrooms', 'tomatoes', 'onions', 'pineapple', 'ham', 'neapolitan-crust', 'basil', 'emmental-cheese', 'mozzarella', 'cheddar' ]];
-//********************************Se hace por b_console****************************************
-// COMO EL RSULTADO FUE UN SOLO ELEMENTO  NO SE REQUIERE HACER LOS SIGUIENTE SE CREA EL ARCHIVO
-// b_console "encontrar por unitario"
-//*********************************************************************************************
-
-//***************************se hace para c_many_ingredients*********************************************
-// el siguiente cidigo solo se agrega para el caso  C c_many_ingredients
-var minimizar = require('./d_funminimizar100');
-var funmin = minimizar();
-//console.log(funmin);
 //*********************************************************************************************
 
 //Combinaciones
@@ -80,7 +98,7 @@ var funmin = minimizar();
   };
 
   try {
-    var combinaciones0 = obtenerConjuntoPotencia(funmin);
+    var combinaciones0 = obtenerConjuntoPotencia(arraypizzas);
     //console.log('Obtencion de todas las combinaciones 5C1, 5C2, 5C3 ,5C4 ,5C5');
     //console.log(combinaciones0); // Se obtienen todas las combinaciones de 5C1, 5C2, 5C3 ,5C4 ,5C5
   } catch (e) {
@@ -92,7 +110,7 @@ var funmin = minimizar();
   //let cincoCdos = [];
   var cincoCdos = new Array();
   for (var i=0; i < longcombinaciones0; i++) {
-    if (combinaciones0[i].length == 4) { //IMPORTANTE PARA DEFINIR LA LONGITUD DE LAS CONBINACIONES r EN nCr DONDE r es numerode elementos en combinacion
+    if (combinaciones0[i].length == 3) { //IMPORTANTE PARA DEFINIR LA LONGITUD DE LAS CONBINACIONES r EN nCr DONDE r es numerode elementos en combinacion
       //cincoCdos.push ({
       //  com: combinaciones0[i],
       //});
@@ -107,8 +125,8 @@ var funmin = minimizar();
   var cincoCdosfiltered = cincoCdos.filter(function (el) {
     return el != null;
   });
-  //console.log('Arreglo con combinaciones 5Cr del Arreglo cincoCdos Filtrado');
-  //console.log(cincoCdosfiltered);
+  console.log('Arreglo con combinaciones 5Cr del Arreglo cincoCdos Filtrado');
+  console.log(cincoCdosfiltered);
   var longcincoCdos = cincoCdosfiltered.length
   console.log('Numero de combinaciones Posibles nCr');
   console.log(longcincoCdos);
@@ -147,6 +165,11 @@ var funmin = minimizar();
     sub.push(terceramatriz);
   }
 
+  console.log('Array Total que representa nCr con union de subconjuntos CON VALORES REPETIDOS');
+  console.log(sub); //Muestra arreglos con elementos repetidos
+  //console.log('Es array???');
+  //console.log(Array.isArray(sub));
+
   //eliminar los arreglos con valores repetidos
         // buscar elementos con indices repetidos
         var longsub = sub.length;
@@ -154,14 +177,22 @@ var funmin = minimizar();
         for (var i = 0; i < longsub; i++) {
           var segundoarreglo = sub[i];
           var longsegundoarreglo = segundoarreglo.length;
+          //console.log('Aqui...5');
+          //console.log(longsegundoarreglo);
+          //console.log('Es array???');
+          //console.log(Array.isArray(segundoarreglo));
+          //var tipo = segundoarreglo[0];
+          //console.log('que tipo es ');
+          //console.log(tipo);
+          //console.log(typeof tipo);
 
           const nuevoArr = Array.from(new Set(segundoarreglo))
 
               subnorepetidos.push(nuevoArr);
 
         }
-        //console.log("Array Total que representa nCr con union de subconjuntos con valores NO REPETIDOS");
-        //console.log(subnorepetidos);
+        console.log("Array Total que representa nCr con union de subconjuntos con valores NO REPETIDOS");
+        console.log(subnorepetidos);
 
     // Sumar cantidad de elementos(Ingredientes en cada arreglo del arreglo de combinaciones)
     var longsubnorepetidos = subnorepetidos.length;
@@ -170,8 +201,8 @@ var funmin = minimizar();
       var arreglosecundario = subnorepetidos[i].length;
       sumaingredientes.push(arreglosecundario);
     }
-    //console.log('Se obtiene un arreglo con la suma de la cantidad de ingredientes en cada combinación');
-    //console.log(sumaingredientes);
+    console.log('Se obtiene un arreglo con la suma de la cantidad de ingredientes en cada combinación');
+    console.log(sumaingredientes);
     //obtener el maximo del conjunto
     var max = Math.max(...sumaingredientes);
     console.log('Se obtiene la suma maxima de ingredientes');
@@ -184,16 +215,44 @@ var funmin = minimizar();
       ind = sumaingredientes.indexOf(max, ind + 1);
       }
       console.log('Se Obtiene el o los del arreglo que pertenece al valor máximo');
-      //console.log(indicemax);
-
-      //IMPORTANTE SE AGREGA EN FOR PARA OBTENER TODOS LOS conjuntoPizzasmax
+      console.log(indicemax);
       // una vez obtenido el key regresar al conjunto cincoCdosfiltered para obtener el arreglo del arreglo con mejor puntaje sub
-      //var conjuntoPizzasmax = cincoCdosfiltered[indicemax[0]]; // se coloca el subindice [0] ya que puede haber mas de dos valores iguales maximos y para seleccionar solo uno de ellos
-      //console.log('Se Obtiene la combinacion que genera maximos Ingredientes del primer indice max ess decir[0]');
-      //console.log(conjuntoPizzasmax);
-      for (var r = 0; r < indicemax.length; r++) {
-        var conjuntoPizzasmax = cincoCdosfiltered[indicemax[r]];
+      var conjuntoPizzasmax = cincoCdosfiltered[indicemax[0]]; // se coloca el subindice [0] ya que puede haber mas de dos valores iguales maximos y para seleccionar solo uno de ellos
+      console.log('Se Obtiene la combinacion que genera maximos Ingredientes del primer indice max ess decir[0]');
+      console.log(conjuntoPizzasmax);
 
+
+//*********************************************************************************
+  // arreglo como objeto PRUEBAS
+/*
+  console.log('keys del bjeto');
+  console.log(Object.keys(M)); // console: ['0', '1', '2']
+
+  console.log('que tipo es M');
+  console.log(typeof M);
+  console.log('que tipo es arraypizzas');
+  console.log(typeof arraypizzas);
+
+  var ejemplo = ['mushroom', 'tomato', 'basil'];
+
+  var indicespizzas = [];
+  const found = arraypizzas.find( (arraypizza, index) => {
+    console.log(index);
+    indicespizzas.push(index);
+    //console.log(JSON.stringify(arraypizza) === JSON.stringify(ejemplo));
+    return JSON.stringify(arraypizza) === JSON.stringify(ejemplo);
+  })
+  console.log('metodo find');
+  console.log('Found', found);
+  console.log('indicespizzas');
+  console.log(indicespizzas);
+
+  console.log('nuevo');
+    for (var key in M) {
+      console.log(key);
+      console.log(M[key]);
+    }
+*/
 //*********************************************************************************
     var longconjuntoPizzasmax = conjuntoPizzasmax.length;
     var pizzas = [];
@@ -207,16 +266,39 @@ var funmin = minimizar();
       indicespizzas.push(index);
       return JSON.stringify(arraypizza) === JSON.stringify(elementodecombinacion);
     })
-    //console.log('indices de las pizzas');
-    //console.log(indicespizzas);
+    console.log('indices de las pizzas');
+    console.log(indicespizzas);
 //*********************************************************************************
     //Obtener el ultimo elemento que es el indice para agregarlo al  array pizzas que seran las pizzas a pedir
     var ultimonumero = indicespizzas[indicespizzas.length-1];
     pizzas.push(ultimonumero);
 
 //*********************************************************************************
+/*
+      switch (elementodecombinacion) {
+        case M[0]:
+          pizzas.push('M0');
+          break;
+        case M[1]:
+          pizzas.push('M1');
+          break;
+        case M[2]:
+          pizzas.push('M2');
+          break;
+        case M[3]:
+          pizzas.push('M3');
+          break;
+        case M[4]:
+          pizzas.push('M4');
+          break;
+        case M[5]:
+          pizzas.push('M5');
+          break;
+          default: "No se encuantra";
+      }
+*/
+//*********************************************************************************
 
     }
     console.log('Lista de las pizzas a entregar a un Equipo de T personas');
     console.log(pizzas);
-}

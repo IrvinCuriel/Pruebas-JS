@@ -3,7 +3,7 @@
 
 let fs = require('fs');
 
-let archivo = fs.readFileSync('d_many_pizzas', 'utf-8');
+let archivo = fs.readFileSync('c_many_ingredients', 'utf-8');
 //console.log(archivo);
 
 var separador = "\n";
@@ -46,8 +46,8 @@ var remover = informacion.splice((informacion.length-1), 1);
       });
       Mv[i] = listaingredientes;
   }
-  //console.log('Arreglo de Pizas con ingredientes = arraypizzas');
-  //console.log(Mv);
+  console.log('Arreglo de Pizas con ingredientes = arraypizzas');
+  console.log(Mv);
   var arreglo = Mv;
 
 //*********************************************************************************************
@@ -64,7 +64,7 @@ var arraypizzas = Mv;
 
 //***************************se hace para c_many_ingredients*********************************************
 // el siguiente cidigo solo se agrega para el caso  C c_many_ingredients
-var minimizar = require('./d_funminimizar100');
+var minimizar = require('./c_funminimizar10');
 var funmin = minimizar();
 //console.log(funmin);
 //*********************************************************************************************
@@ -92,7 +92,7 @@ var funmin = minimizar();
   //let cincoCdos = [];
   var cincoCdos = new Array();
   for (var i=0; i < longcombinaciones0; i++) {
-    if (combinaciones0[i].length == 4) { //IMPORTANTE PARA DEFINIR LA LONGITUD DE LAS CONBINACIONES r EN nCr DONDE r es numerode elementos en combinacion
+    if (combinaciones0[i].length == 2) { //IMPORTANTE PARA DEFINIR LA LONGITUD DE LAS CONBINACIONES r EN nCr DONDE r es numerode elementos en combinacion
       //cincoCdos.push ({
       //  com: combinaciones0[i],
       //});

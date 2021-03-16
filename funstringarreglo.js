@@ -1,6 +1,6 @@
-module.exports = function(cadenaADividir,separador) {
+module.exports = function(dividirArray,separador) {
   var nuevoarreglo = [];
-   var arrayDeCadenas = cadenaADividir.split(separador);
+   var arrayDeCadenas = dividirArray.split(separador);
    for (var i=0; i < arrayDeCadenas.length; i++) {
       nuevoarreglo.push(arrayDeCadenas[i]);
    }

@@ -3,7 +3,7 @@
 
 let fs = require('fs');
 
-let archivo = fs.readFileSync('d_many_pizzas', 'utf-8');
+let archivo = fs.readFileSync('e_many_teams', 'utf-8');
 //console.log(archivo);
 
 var separador = "\n";
@@ -64,7 +64,7 @@ var arraypizzas = Mv;
 
 //***************************se hace para c_many_ingredients*********************************************
 // el siguiente cidigo solo se agrega para el caso  C c_many_ingredients
-var minimizar = require('./d_funminimizar100');
+var minimizar = require('./e_funminimizar100');
 var funmin = minimizar();
 //console.log(funmin);
 //*********************************************************************************************
@@ -183,7 +183,7 @@ var funmin = minimizar();
       indicemax.push(ind);
       ind = sumaingredientes.indexOf(max, ind + 1);
       }
-      console.log('Se Obtiene el o los del arreglo que pertenece al valor máximo');
+      //console.log('Se Obtiene el o los del arreglo que pertenece al valor máximo');
       //console.log(indicemax);
 
       //IMPORTANTE SE AGREGA EN FOR PARA OBTENER TODOS LOS conjuntoPizzasmax

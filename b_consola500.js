@@ -3,7 +3,7 @@
 
 let fs = require('fs');
 
-let archivo = fs.readFileSync('d_many_pizzas', 'utf-8');
+let archivo = fs.readFileSync('b_little_bit_of_everything', 'utf-8');
 //console.log(archivo);
 
 var separador = "\n";
@@ -46,8 +46,8 @@ var remover = informacion.splice((informacion.length-1), 1);
       });
       Mv[i] = listaingredientes;
   }
-  //console.log('Arreglo de Pizas con ingredientes = arraypizzas');
-  //console.log(Mv);
+  console.log('Arreglo de Pizas con ingredientes = arraypizzas');
+  console.log(Mv);
   var arreglo = Mv;
 
 //*********************************************************************************************
@@ -55,16 +55,9 @@ var remover = informacion.splice((informacion.length-1), 1);
 var arraypizzas = Mv;
 //*********************************************************************************************
 
-//********************************Se hace por b_console****************************************
-//var arraypizzas = [['mushrooms', 'tomatoes', 'onions', 'pineapple', 'ham', 'neapolitan-crust', 'basil', 'emmental-cheese', 'mozzarella', 'cheddar' ]];
-//********************************Se hace por b_console****************************************
-// COMO EL RSULTADO FUE UN SOLO ELEMENTO  NO SE REQUIERE HACER LOS SIGUIENTE SE CREA EL ARCHIVO
-// b_console "encontrar por unitario"
-//*********************************************************************************************
-
-//***************************se hace para c_many_ingredients*********************************************
-// el siguiente cidigo solo se agrega para el caso  C c_many_ingredients
-var minimizar = require('./d_funminimizar100');
+//***************************se hace para b_little_bit_of_everything*********************************************
+// el siguiente cidigo solo se agrega para el caso  C b_little_bit_of_everything
+var minimizar = require('./b_funminimizar500');
 var funmin = minimizar();
 //console.log(funmin);
 //*********************************************************************************************
@@ -184,15 +177,16 @@ var funmin = minimizar();
       ind = sumaingredientes.indexOf(max, ind + 1);
       }
       console.log('Se Obtiene el o los del arreglo que pertenece al valor máximo');
-      //console.log(indicemax);
+      console.log(indicemax);
 
       //IMPORTANTE SE AGREGA EN FOR PARA OBTENER TODOS LOS conjuntoPizzasmax
       // una vez obtenido el key regresar al conjunto cincoCdosfiltered para obtener el arreglo del arreglo con mejor puntaje sub
-      //var conjuntoPizzasmax = cincoCdosfiltered[indicemax[0]]; // se coloca el subindice [0] ya que puede haber mas de dos valores iguales maximos y para seleccionar solo uno de ellos
+      //var conjuntoPizzasmax = cincoCdosfiltered[indicemax[5]]; // se coloca el subindice [0] ya que puede haber mas de dos valores iguales maximos y para seleccionar solo uno de ellos
       //console.log('Se Obtiene la combinacion que genera maximos Ingredientes del primer indice max ess decir[0]');
       //console.log(conjuntoPizzasmax);
       for (var r = 0; r < indicemax.length; r++) {
-        var conjuntoPizzasmax = cincoCdosfiltered[indicemax[r]];
+        var conjuntoPizzasmax = cincoCdosfiltered[indicemax[r]]; // se coloca el subindice [0] ya que puede haber mas de dos valores iguales maximos y para seleccionar solo uno de ellos
+
 
 //*********************************************************************************
     var longconjuntoPizzasmax = conjuntoPizzasmax.length;

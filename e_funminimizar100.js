@@ -2,7 +2,7 @@ module.exports = function() {
   //*********************************IMPORTADO DESDE MINIMIZAR************************************************************
   let fs = require('fs');
 
-  let archivo1 = fs.readFileSync('d_many_pizzas', 'utf-8');
+  let archivo1 = fs.readFileSync('e_many_teams', 'utf-8');
   //console.log(archivo1);
 
   var separador1 = "\n";
